@@ -169,12 +169,39 @@ function observe(){A('.rv').forEach(x=>io.observe(x))}
 
 /* ---------- router ---------- */
 function route(){const [p,a]=(location.hash.slice(1)||'home').split('/');const fn=P[p]||P.home;GL=GALLERY;
- $('#app').innerHTML=fn(a);A('nav a.t').forEach(x=>{const h=x.getAttribute('href').slice(1).split('/')[0];x.classList.toggle('on',h==p||(p=='event'&&h=='events'))});$('#nv').classList.remove('open');$('#mb').textContent='☰';scrollTo(0,0);observe();
+ $('#app').innerHTML=fn(a);navActive(p,a);navCloseAll();scrollTo(0,0);observe();
  if(p=='gallery')GL=(a&&decodeURIComponent(a)!='সব')?GALLERY.filter(g=>g.category==decodeURIComponent(a)):GALLERY}
 function chrome(){$('#topl').innerHTML=[C.phone&&'☎ '+esc(C.phone),C.email&&`✉ <a href="mailto:${esc(C.email)}">${esc(C.email)}</a>`].filter(Boolean).join(' &nbsp; ')+socials().replace('class="socs"','class="socs socs-top"')||'সচেতনতা • ঐক্য • তথ্যপ্রমাণ • প্রতিনিধিত্ব • উন্নয়ন';
  $('#ft2').innerHTML=contactBlock()||'<span style="color:#cdb59d">কার্যালয়ের তথ্য শীঘ্রই প্রকাশিত হবে।</span>';$('#yr').textContent=bn(new Date().getFullYear());
- const w=(C.whatsapp||'').replace(/\D/g,'');if(w)document.body.insertAdjacentHTML('beforeend',`<a class="wa" href="https://wa.me/${w}" target="_blank" rel="noopener" aria-label="হোয়াটসঅ্যাপ">💬</a>`)}
-$('#mb').onclick=()=>{const o=$('#nv').classList.toggle('open');$('#mb').setAttribute('aria-expanded',o);$('#mb').textContent=o?'✕':'☰'};
+}
+/* ---------- মেনু: ড্রপডাউন (হোভার + ক্লিক + কিবোর্ড) ---------- */
+const NI=A('#nv .ni').filter(i=>i.querySelector('.dt')),mqDesk=matchMedia('(min-width:1180px)'),mqHover=matchMedia('(hover:hover)');
+const hov=()=>mqDesk.matches&&mqHover.matches;
+function niSet(i,o,pin){i.classList.toggle('open',o);i.querySelector('.dt').setAttribute('aria-expanded',o);i._pin=o?!!pin:false}
+function niCloseAll(except){NI.forEach(i=>i!==except&&niSet(i,false))}
+function navCloseAll(){niCloseAll();const n=$('#nv');if(n.classList.contains('open')){n.classList.remove('open');$('#mb').setAttribute('aria-expanded','false');$('#mb').setAttribute('aria-label','মেনু খুলুন');document.body.classList.remove('navopen')}}
+function navActive(p,a){const DEF={about:'story',journal:'issues',knowledge:'faq',citizen:'join'};
+ const key=(seg,sub)=>DEF[seg]?seg+'/'+((sub&&sub!='')?sub:DEF[seg]):seg;
+ const cur=key(p=='event'?'events':p,DEF[p]?a:'');
+ A('#nv a,.hact a').forEach(x=>{const h=x.getAttribute('href').slice(1),[s,u]=h.split('/'),on=key(s,u)==cur;
+  x.classList.toggle('on',on);on?x.setAttribute('aria-current','page'):x.removeAttribute('aria-current')});
+ A('#nv .ni').forEach(i=>i.querySelector('.dt')&&i.querySelector('.dt').classList.toggle('on',!!i.querySelector('.dd a.on')))}
+NI.forEach(i=>{const b=i.querySelector('.dt'),L=()=>A('#'+i.querySelector('.dd').id+' a');
+ b.addEventListener('click',e=>{e.stopPropagation();const o=i.classList.contains('open');if(o&&(i._pin||!hov()))niSet(i,false);else{niCloseAll(i);niSet(i,true,true)}});
+ i.addEventListener('mouseenter',()=>{if(hov()){clearTimeout(i._t);niCloseAll(i);niSet(i,true,i._pin)}});
+ i.addEventListener('mouseleave',()=>{if(hov()&&!i._pin)i._t=setTimeout(()=>niSet(i,false),200)});
+ i.addEventListener('focusout',e=>{if(!i.contains(e.relatedTarget)&&hov()&&!i._pin)niSet(i,false)});
+ i.addEventListener('keydown',e=>{const l=L(),k=e.key,cur=l.indexOf(document.activeElement),open=i.classList.contains('open');
+  if(k=='Escape'&&open){e.preventDefault();niSet(i,false);b.focus()}
+  else if(k=='ArrowDown'){e.preventDefault();if(!open){niCloseAll(i);niSet(i,true,true)}l[cur<0?0:Math.min(cur+1,l.length-1)].focus()}
+  else if(k=='ArrowUp'&&open){e.preventDefault();cur<=0?b.focus():l[cur-1].focus()}
+  else if(k=='Home'&&cur>=0){e.preventDefault();l[0].focus()}
+  else if(k=='End'&&cur>=0){e.preventDefault();l[l.length-1].focus()}
+  else if(k=='Tab'&&open&&cur>=0&&!e.shiftKey&&cur==l.length-1)niSet(i,false)})});
+document.addEventListener('click',e=>{if(!e.target.closest('#nv')&&!e.target.closest('#mb')){niCloseAll();if(!mqDesk.matches)navCloseAll()}});
+$('#mb').onclick=()=>{const n=$('#nv'),o=n.classList.toggle('open');$('#mb').setAttribute('aria-expanded',o);$('#mb').setAttribute('aria-label',o?'মেনু বন্ধ করুন':'মেনু খুলুন');document.body.classList.toggle('navopen',o);if(!o)niCloseAll()};
+addEventListener('keydown',e=>{if(e.key=='Escape'&&$('#nv').classList.contains('open')&&!NI.some(i=>i.classList.contains('open'))){navCloseAll();$('#mb').focus()}});
+(mqDesk.addEventListener?mqDesk.addEventListener('change',navCloseAll):mqDesk.addListener(navCloseAll));
 addEventListener('hashchange',route);chrome();route();
 
 

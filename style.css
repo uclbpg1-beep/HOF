@@ -15,11 +15,11 @@ nav a.t{display:block;padding:9px 11px;text-decoration:none;color:var(--nv);font
 nav a.t:hover,nav a.on{background:#fff1df;color:var(--sf)}
 nav a.join{background:linear-gradient(180deg,var(--sf2),var(--sf));color:#fff!important;border-radius:999px;margin-left:6px;box-shadow:0 3px 0 var(--mr)}
 .dd{display:none;position:absolute;right:0;top:100%;min-width:230px;background:#fff;border:1px solid var(--ln);border-top:3px solid var(--sf);border-radius:0 0 12px 12px;box-shadow:var(--sh);padding:6px;z-index:50}
-nav>div:hover .dd,nav>div:focus-within .dd{display:block}.dd a{display:block;padding:9px 12px;color:var(--tx);text-decoration:none;border-radius:8px;font-size:16px}.dd a:hover{background:var(--sf);color:#fff}
+.dd a{display:block;padding:9px 12px;color:var(--tx);text-decoration:none;border-radius:8px;font-size:16px}.dd a:hover{background:var(--sf);color:#fff}
 .btn{display:inline-block;background:linear-gradient(180deg,var(--sf2),var(--sf));color:#fff!important;padding:12px 26px;border-radius:999px;font:600 18px 'Hind Siliguri';text-decoration:none;border:0;cursor:pointer;box-shadow:0 4px 0 var(--mr),0 8px 18px rgba(138,28,18,.25);transition:.15s;margin:4px 2px}
 .btn:hover{transform:translateY(-2px)}.btn.o{background:transparent;border:2px solid #ffd08a;color:#ffd08a!important;box-shadow:none}.btn.nv{background:var(--nv);box-shadow:0 4px 0 #000}.btn.big{font-size:21px;padding:16px 36px}.btn.sm{padding:7px 18px;font-size:15px;box-shadow:none}
 #mb{display:none;margin-left:auto;background:var(--sf);color:#fff;border:0;border-radius:8px;padding:8px 13px;font-size:22px}
-@media(max-width:1279px){#mb{display:block}nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;padding:10px 16px 16px;flex-direction:column;align-items:stretch;gap:0;border-bottom:3px solid var(--sf);max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);overflow:auto;box-shadow:0 14px 24px rgba(0,0,0,.18)}nav.open{display:flex}nav a.t{padding:12px 12px;font-size:17px}.dd{display:block;position:static;box-shadow:none;border:0;border-left:3px solid var(--gd);border-radius:0;background:#fff7ec;margin:0 0 6px 14px;min-width:0;padding:2px 4px}nav a.join,nav a.dn{text-align:center;margin:6px 0}}
+
 
 /* hero */
 .hero{position:relative;background:#1a0703}
@@ -299,3 +299,103 @@ header{position:-webkit-sticky;position:sticky;top:0;z-index:60}
 .goog-te-gadget-simple .goog-te-menu-value span{font-size:12.5px!important;color:#ffeedb!important}
 .goog-te-gadget-simple .goog-te-menu-value span:nth-child(3),.goog-te-gadget-simple .goog-te-menu-value span:nth-child(5){display:none!important}
 @media(max-width:1100px){.top .w{justify-content:space-between}}
+
+/* ===== v4: নতুন নেভিগেশন মেনু ===== */
+.skip{position:absolute;left:8px;top:-60px;z-index:200;background:#fff;color:var(--mr2);padding:10px 16px;border-radius:0 0 10px 10px;font-weight:700;text-decoration:none;box-shadow:var(--sh);transition:top .15s}.skip:focus{top:0}
+.hd{display:flex;align-items:center;gap:10px 14px;flex-wrap:nowrap}
+.brand{order:1;flex:0 1 auto}
+nav{order:2;margin-left:auto;display:flex;align-items:center;gap:2px}
+.hact{order:3;display:flex;gap:8px;align-items:center;flex:0 0 auto}
+#mb{order:4}
+nav>.ni{position:relative}
+nav .t{font:600 16px 'Hind Siliguri','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;color:var(--nv);background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:10px 11px;border-radius:10px;text-decoration:none;white-space:nowrap;line-height:1.3}
+nav .t:hover,nav .ni.open>.dt{background:#fff1df;color:#a83a05}
+nav .t.on{color:#a83a05;background:#fff1df;box-shadow:inset 0 -3px 0 var(--sf)}
+.car{width:8px;height:8px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s;flex:0 0 auto}
+.ni.open>.dt .car{transform:rotate(225deg) translateY(-2px)}
+nav .dd{display:none;position:absolute;left:0;right:auto;top:calc(100% + 6px);min-width:250px;background:#fff;border:1px solid var(--ln);border-top:4px solid var(--sf);border-radius:0 0 14px 14px;box-shadow:0 18px 40px rgba(74,11,6,.22);padding:8px;z-index:70;margin:0}
+nav .dd:before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+nav .ni.open>.dd{display:block;animation:ddin .16s ease-out}
+@keyframes ddin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+nav .dd a{display:block;padding:11px 14px;color:#2a1a12;text-decoration:none;border-radius:9px;font-size:16px;line-height:1.4;white-space:nowrap}
+nav .dd a:hover,nav .dd a:focus-visible{background:#c2410c;color:#fff}
+nav .dd a.on{background:#fff1df;color:#a83a05;font-weight:700;box-shadow:inset 4px 0 0 var(--sf)}
+nav .dd a.on:hover{background:#c2410c;color:#fff}
+.hact .t{font:700 16px 'Hind Siliguri','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;text-decoration:none;white-space:nowrap;line-height:1.3}
+.hact .join{background:linear-gradient(180deg,var(--sf2),var(--sf));color:#fff;box-shadow:0 3px 0 var(--mr)}
+.hact .dn{background:linear-gradient(180deg,#ffd98a,var(--gd));color:var(--mr2);box-shadow:0 3px 0 #a9761a}
+.hact .t:hover{filter:brightness(1.06);transform:translateY(-1px)}.hact .t.on{outline:3px solid rgba(138,28,18,.35);outline-offset:2px}
+#mb{display:none;width:46px;height:46px;padding:0;border:0;border-radius:12px;background:var(--mr);cursor:pointer;align-items:center;justify-content:center;flex:0 0 auto}
+#mb .bars{display:grid;gap:5px;width:22px}#mb .bars i{display:block;height:3px;border-radius:3px;background:#fff;transition:.2s}
+#mb[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(8px) rotate(45deg)}#mb[aria-expanded="true"] .bars i:nth-child(2){opacity:0}#mb[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+nav a:focus-visible,nav button:focus-visible,.hact a:focus-visible,#mb:focus-visible{outline:3px solid #ff9a1f;outline-offset:2px}
+@media(min-width:1180px){nav .t{padding:10px 9px;font-size:15.5px}}
+@media(min-width:1320px){nav .t{padding:10px 12px;font-size:16px}nav{gap:4px}}
+/* ট্যাব/মোবাইল */
+@media(max-width:1179px){
+ #mb{display:inline-flex;order:2;margin-left:auto}
+ .hact{order:3}
+ nav{display:none;position:absolute;left:0;right:0;top:100%;margin:0;background:#fff;flex-direction:column;align-items:stretch;gap:2px;padding:10px 14px 16px;border-bottom:4px solid var(--sf);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 18px 30px rgba(0,0,0,.25)}
+ nav.open{display:flex}
+ nav>.ni{border-bottom:1px solid var(--ln)}nav>.ni:last-child{border-bottom:0}
+ nav .t{display:flex;width:100%;justify-content:space-between;padding:14px 12px;font-size:17.5px;min-height:48px}
+ nav .t.on{box-shadow:inset 4px 0 0 var(--sf)}
+ nav .dd{position:static;display:none;min-width:0;border:0;border-left:3px solid var(--gd);border-radius:0 0 10px 0;box-shadow:none;background:#fff7ec;margin:0 0 8px 12px;padding:4px;animation:none}
+ nav .dd:before{display:none}
+ nav .dd a{white-space:normal;padding:13px 14px;min-height:46px}
+ body.navopen{overflow:hidden}
+}
+@media(max-width:700px){
+ .hd{flex-wrap:wrap;padding:8px 12px 10px;row-gap:8px}
+ .brand{flex:1 1 auto;min-width:0}#mb{order:2}
+ .hact{order:3;flex:0 0 100%;width:100%}.hact .t{flex:1 1 0;justify-content:center;padding:6px 10px;font-size:16.5px;min-height:40px}
+ nav{max-height:calc(100vh - 175px);max-height:calc(100dvh - 175px)}
+}
+/* ভাষা-অনুবাদ নির্দেশনা (ছোট) */
+.gt{gap:8px}.gt-hint{font-size:12.5px;line-height:1.3;color:#ffe3a8;white-space:nowrap}
+@media(max-width:700px){.top .w{padding:5px 12px;row-gap:3px}.tl1{flex:1 1 100%;justify-content:center;order:1}.gt{order:2;flex:1 1 100%;justify-content:center;margin:0}.gt-hint{font-size:12px}}
+@media(min-width:701px) and (max-width:1100px){.gh-l{display:none}}
+
+/* ===== v5: সহায়ক চ্যাট ===== */
+.wa{display:none!important}
+#cb{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;font-family:'Hind Siliguri','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif}
+.cb-launch{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;color:#fff;background:linear-gradient(180deg,#e8630a,#b8340a);padding:12px 20px 12px 16px;border-radius:999px;font:700 17px 'Hind Siliguri','Noto Sans Bengali',system-ui,sans-serif;box-shadow:0 5px 0 #6b160b,0 12px 28px rgba(74,11,6,.4)}
+.cb-launch:hover{filter:brightness(1.07)}.cb-launch .cb-ic{font-size:22px;line-height:1}
+.cb-launch:focus-visible,#cb button:focus-visible,#cb a:focus-visible,#cb input:focus-visible{outline:3px solid #ffd26a;outline-offset:2px}
+.cb-tip{position:absolute;right:0;bottom:68px;width:max-content;max-width:min(260px,calc(100vw - 40px));background:#fff;color:#2a1a12;border:2px solid var(--gd);border-radius:14px 14px 4px 14px;padding:10px 34px 10px 14px;font-size:15.5px;line-height:1.5;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.cb-tip[hidden],.cb-panel[hidden]{display:none}
+.cb-tip button{position:absolute;top:2px;right:2px;width:28px;height:28px;border:0;background:none;font-size:14px;color:#6d5748;cursor:pointer}
+.cb-panel{position:absolute;right:0;bottom:0;width:min(390px,calc(100vw - 24px));height:min(600px,calc(100vh - 110px));height:min(600px,calc(100dvh - 110px));background:#fffaf1;border:2px solid var(--gd);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;overflow:hidden;animation:cbin .22s ease-out}
+@keyframes cbin{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+#cb.on .cb-launch{display:none}
+.cb-panel header{position:static;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--mr2),var(--mr));color:#fff;padding:12px 14px;box-shadow:none;border:0;z-index:auto}
+.cb-panel header:after{display:none}
+.cb-panel header b{display:block;font-size:17px;color:#ffe3a8;line-height:1.3}.cb-panel header small{display:block;font-size:13px;color:#ffe8cc}
+.cb-av{flex:0 0 40px;height:40px;border-radius:50%;background:#ffd26a;color:var(--mr2);display:grid;place-items:center;font:700 22px 'Noto Serif Bengali',serif}
+.cb-panel header>div{flex:1;min-width:0}
+#cb-close{flex:0 0 40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
+.cb-log{flex:1;overflow-y:auto;padding:14px 12px 6px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.cb-m{max-width:88%;font-size:16px;line-height:1.6}
+.cb-m.bot{align-self:flex-start;background:#fff;border:1px solid var(--ln);border-radius:4px 16px 16px 16px;padding:10px 13px;color:#2a1a12;box-shadow:0 2px 8px rgba(138,28,18,.08)}
+.cb-m.me{align-self:flex-end;background:linear-gradient(180deg,#d9560a,#b8340a);color:#fff;border-radius:16px 4px 16px 16px;padding:9px 13px}
+.cb-m.fb{align-self:flex-start;max-width:100%}
+.cb-t{white-space:pre-line;word-break:break-word}
+.cb-links{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.cb-links a{display:block;padding:9px 12px;border-radius:10px;background:#fff1df;color:#8a1c12;font-weight:700;text-decoration:none;font-size:15.5px;border:1px solid var(--gd)}.cb-links a:hover{background:#c2410c;color:#fff;border-color:#c2410c}
+.cb-fb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14.5px;color:#5a4538}.cb-fb span{width:100%}
+.cb-fb button{font:600 15px 'Hind Siliguri',system-ui,sans-serif;border:2px solid var(--gd);background:#fff;color:#4a0b06;border-radius:999px;padding:6px 14px;min-height:40px;cursor:pointer}.cb-fb button:hover{background:#fff1df}
+.cb-ho{display:flex;flex-direction:column;gap:8px}
+.cb-ho a{display:block;text-align:center;text-decoration:none;font-weight:700;border-radius:12px;padding:11px 12px;font-size:16px}
+.cb-wa{background:#128c4a;color:#fff}.cb-wa:hover{background:#0e7a3f}.cb-call{background:#fff1df;color:#8a1c12;border:1px solid var(--gd)}
+.cb-ho small{color:#5a4538;font-size:13.5px;line-height:1.5}
+.cb-chips{display:flex;gap:6px;overflow-x:auto;padding:6px 12px 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;flex:0 0 auto}
+.cb-chips button{flex:0 0 auto;white-space:nowrap;font:600 14.5px 'Hind Siliguri','Noto Sans Bengali',system-ui,sans-serif;border:1.5px solid var(--gd);background:#fff;color:#4a0b06;border-radius:999px;padding:6px 13px;min-height:38px;cursor:pointer}.cb-chips button:hover{background:#fff1df}
+.cb-chips .cb-wchip{background:#e7f6ed;border-color:#128c4a;color:#0b5a30}
+.cb-form{display:flex;gap:8px;padding:8px 12px;border-top:1px solid var(--ln);background:#fff}
+.cb-form input{flex:1;min-width:0;font:16px 'Hind Siliguri','Noto Sans Bengali',system-ui,sans-serif;padding:10px 14px;border:2px solid var(--ln);border-radius:999px;background:#fffaf1;color:#2a1a12}
+.cb-form button{flex:0 0 46px;height:46px;border:0;border-radius:50%;background:var(--sf);color:#fff;font-size:18px;cursor:pointer;background:#c2410c}
+.cb-note{margin:0;padding:5px 12px 9px;font-size:12.5px;line-height:1.4;color:#5a4538;background:#fff;text-align:center}
+.cb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:700px){#cb{right:10px;bottom:calc(10px + env(safe-area-inset-bottom))}.cb-launch{padding:11px 16px 11px 13px;font-size:16px}
+ .cb-panel{position:fixed;right:8px;left:8px;bottom:calc(8px + env(safe-area-inset-bottom));width:auto;height:min(78vh,620px);height:min(78dvh,620px)}
+ .cb-m{max-width:92%}}

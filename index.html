@@ -9,23 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;800&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head><body>
+<a class="skip" href="#" onclick="document.getElementById('app').focus();return false">মূল বিষয়বস্তুতে যান</a>
 <div class="top"><div class="w"><span id="topl" class="tl1"></span><span class="bn tsl">জাগো হিন্দু • সংগঠিত হও • অধিকার নাও • রাষ্ট্র নির্মাণ করো</span>
-<div class="gt notranslate" translate="no"><div id="google_translate_element"></div></div></div></div>
+<div class="gt notranslate" translate="no"><span class="gt-hint"><span aria-hidden="true">🌐</span> <span class="gh-l">To Translate</span> Click here ☞</span><div id="google_translate_element" title="Google Translate — আপনার ভাষা বেছে নিন"></div></div></div></div>
 <header><div class="hd"><a class="brand" href="#home"><img src="images/logo.jpg" alt="হিন্দু ওবিসি ফ্রন্ট"><span><b>হিন্দু ওবিসি ফ্রন্ট</b><small>HINDU OBC FRONT</small></span></a>
-<button id="mb" aria-label="মেনু" aria-expanded="false">☰</button>
-<nav id="nv">
-<div><a class="t" href="#home">প্রথম পাতা</a></div>
-<div><a class="t" href="#about/story">আমাদের কথা</a><div class="dd"><a href="#about/story">আমাদের সম্পর্কে</a><a href="#about/vision">লক্ষ্য ও উদ্দেশ্য</a><a href="#about/work">আমাদের কাজ</a><a href="#about/rani">লোকমাতা রানি রাসমণি</a></div></div>
-<div><a class="t" href="#events">কর্মসূচি ও লেখা</a></div>
-<div><a class="t" href="#gallery">ছবির ঘর</a></div>
-<div><a class="t" href="#archive">সংগ্রহশালা</a></div>
-<div><a class="t" href="#journal/issues">মাসিক পত্রিকা</a><div class="dd"><a href="#journal/issues">সংখ্যাগুলি দেখুন</a><a href="#journal/write">পত্রিকায় লিখুন</a></div></div>
-<div><a class="t" href="#knowledge">জানুন</a><div class="dd"><a href="#knowledge">প্রশ্নোত্তর</a><a href="#knowledge/guides">গাইডলাইন ও নথি</a></div></div>
-<div><a class="t" href="#contact">যোগাযোগ</a></div>
-<div><a class="t join" href="#citizen/join">যোগ দিন</a></div>
-<div><a class="t dn" href="#donate">🪔 অনুদান</a></div>
+<div class="hact"><a class="t join" href="#citizen/join"><span aria-hidden="true">🚩</span> যোগ দিন</a><a class="t dn" href="#donate"><span aria-hidden="true">🪔</span> দান</a></div>
+<button id="mb" type="button" aria-label="মেনু খুলুন" aria-expanded="false" aria-controls="nv"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+<nav id="nv" aria-label="প্রধান মেনু">
+<div class="ni"><a class="t" href="#home">প্রথম পাতা</a></div>
+<div class="ni"><button type="button" class="t dt" aria-haspopup="true" aria-expanded="false" aria-controls="dd-about">আমাদের পরিচয়<i class="car" aria-hidden="true"></i></button><div class="dd" id="dd-about"><a href="#about/story">আমাদের সম্পর্কে</a><a href="#about/vision">লক্ষ্য ও উদ্দেশ্য</a><a href="#about/work">আমাদের কাজ</a><a href="#about/rani">লোকমাতা রানি রাসমণি</a></div></div>
+<div class="ni"><button type="button" class="t dt" aria-haspopup="true" aria-expanded="false" aria-controls="dd-work">কার্যক্রম<i class="car" aria-hidden="true"></i></button><div class="dd" id="dd-work"><a href="#events">কর্মসূচি ও লেখা</a><a href="#gallery">ছবির ঘর</a><a href="#citizen/unit">স্থানীয় ইউনিট গড়ুন</a></div></div>
+<div class="ni"><button type="button" class="t dt" aria-haspopup="true" aria-expanded="false" aria-controls="dd-info">তথ্য ও সহায়তা<i class="car" aria-hidden="true"></i></button><div class="dd" id="dd-info"><a href="#knowledge">জানুন — প্রশ্নোত্তর</a><a href="#knowledge/guides">গাইডলাইন ও নথি</a></div></div>
+<div class="ni"><button type="button" class="t dt" aria-haspopup="true" aria-expanded="false" aria-controls="dd-news">সংবাদ ও প্রকাশনা<i class="car" aria-hidden="true"></i></button><div class="dd" id="dd-news"><a href="#journal/issues">মাসিক পত্রিকা — সংখ্যাগুলি</a><a href="#journal/write">পত্রিকায় লিখুন</a><a href="#archive">সংগ্রহশালা (সংবাদ ও নথি)</a></div></div>
+<div class="ni"><a class="t" href="#contact">যোগাযোগ</a></div>
 </nav></div></header>
-<main id="app"></main>
+<main id="app" tabindex="-1"></main>
 <footer>
 <svg class="skyline" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><use href="#sky"/></svg>
 <div class="w fg">
@@ -47,4 +45,5 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
 <script src="data.js"></script>
 <script src="content.js"></script>
 <script src="site.js"></script>
+<script src="chatbot.js"></script>
 </body></html>
